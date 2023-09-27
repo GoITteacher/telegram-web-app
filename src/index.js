@@ -6,10 +6,6 @@ const spanEl = document.querySelector('.js-name');
 const avatarEl = document.querySelector('.js-avatar');
 
 spanEl.textContent = `${tg.initDataUnsafe?.user?.first_name}`;
-spanEl.parentElement.insertAdjacentHTML(
-  'afterend',
-  `<p style="max-width:80%;">${JSON.stringify(tg.initDataUnsafe?.user)}</p>`
-);
 
 // =========================
 
