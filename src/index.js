@@ -4,6 +4,7 @@ tg.expand(); //расширяем на все окно
 
 const spanEl = document.querySelector('.js-name');
 
+// spanEl.textContent = `${tg.initDataUnsafe?.user?.photo_url}`;
 spanEl.textContent = `${tg.initDataUnsafe?.user?.first_name}`;
 // =========================
 
