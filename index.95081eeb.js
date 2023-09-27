@@ -1,0 +1,2 @@
+var ref,ref1,ref2,tg=window.Telegram.WebApp;tg.expand();var spanEl=document.querySelector(".js-name"),avatarEl=document.querySelector(".js-avatar");spanEl.textContent="".concat(null===(ref=tg.initDataUnsafe)||void 0===ref||null===(ref1=ref.user)||void 0===ref1?void 0:ref1.first_name),spanEl.parentElement.insertAdjacentHTML("afterend",'<p style="max-width:80%;">'.concat(JSON.stringify(null===(ref2=tg.initDataUnsafe)||void 0===ref2?void 0:ref2.user),"</p>"));
+//# sourceMappingURL=index.95081eeb.js.map
