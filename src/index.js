@@ -1,11 +1,9 @@
 import crypto from 'crypto';
-console.log(location);
-var search = location.search.slice(1);
+const tg = window.Telegram.WebApp;
 
-const params = JSON.parse(decodeURI(search));
-document.body.insertAdjacentHTML('beforebegin', params);
 const public_key = 'sandbox_i51927490767';
 const private_key = 'sandbox_GjwO1XaW9pggVlo7p52CJq16yzDD9bfe8dEYWjU2';
+
 function calculateSignature(data) {
   const concatenatedData = private_key + data + private_key;
   const sha1Hash = crypto.createHash('sha1').update(concatenatedData).digest();
@@ -42,3 +40,5 @@ window.LiqPayCheckoutCallback = function () {
       // close
     });
 };
+
+document.body.innerHTML = JSON.stringify(tg.initData);

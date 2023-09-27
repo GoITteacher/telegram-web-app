@@ -5,7 +5,8 @@
   "homepage": "https://goitacademy.github.io/parcel-project-template",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /telegram-web-app/"
+    "build": "parcel build src/*.html --public-url /telegram-web-app/",
+    "push": "git add .; git commit -m 'update'; git push;"
   },
   "repository": {
     "type": "git",
