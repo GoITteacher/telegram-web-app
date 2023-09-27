@@ -41,4 +41,4 @@ window.LiqPayCheckoutCallback = function () {
     });
 };
 
-document.body.innerHTML = JSON.stringify(tg.initData);
+document.body.innerHTML = `<p style="width:400px">${JSON.stringify(tg)}<p>`;
