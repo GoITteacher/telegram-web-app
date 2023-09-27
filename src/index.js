@@ -7,7 +7,7 @@ const avatarEl = document.querySelector('.js-avatar');
 
 avatarEl.setAttribute('src', tg.initDataUnsafe?.user?.photo_url);
 spanEl.textContent = `${tg.initDataUnsafe?.user?.first_name}`;
-spanEl.insertAdjacentHTML(
+spanEl.parentElement.insertAdjacentHTML(
   'afterend',
   `<p>${JSON.stringify(tg.initDataUnsafe?.user)}</p>`
 );
