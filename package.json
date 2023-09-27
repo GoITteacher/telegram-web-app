@@ -21,7 +21,8 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "liqpay": "^0.0.1",
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "mongodb": "^6.1.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",

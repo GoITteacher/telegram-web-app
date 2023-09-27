@@ -1,5 +1,7 @@
 import crypto from 'crypto';
+import { Store } from './mongo/store';
 const tg = window.Telegram.WebApp;
+const userId = tg.initDataUnsafe.user.id;
 
 const public_key = 'sandbox_i51927490767';
 const private_key = 'sandbox_GjwO1XaW9pggVlo7p52CJq16yzDD9bfe8dEYWjU2';
@@ -10,7 +12,6 @@ function calculateSignature(data) {
   const signature = Buffer.from(sha1Hash).toString('base64');
   return signature;
 }
-
 const data = {
   version: 3,
   public_key: public_key,
@@ -22,23 +23,27 @@ const data = {
   language: 'uk',
 };
 
-window.LiqPayCheckoutCallback = function () {
-  LiqPayCheckout.init({
-    data: btoa(JSON.stringify(data)),
-    signature: calculateSignature(btoa(JSON.stringify(data))),
-    embedTo: '#liqpay_checkout',
-    mode: 'embed',
-  })
-    .on('liqpay.callback', function (data) {
-      console.log(data.status);
-      console.log(data);
+async function onLoad() {
+  const record = await Store.getRecord(userId);
+  document.body.innerHTML = JSON.stringify(record);
+  window.LiqPayCheckoutCallback = function () {
+    LiqPayCheckout.init({
+      data: btoa(JSON.stringify(data)),
+      signature: calculateSignature(btoa(JSON.stringify(data))),
+      embedTo: '#liqpay_checkout',
+      mode: 'embed',
     })
-    .on('liqpay.ready', function (data) {
-      // ready
-    })
-    .on('liqpay.close', function (data) {
-      // close
-    });
-};
+      .on('liqpay.callback', function (data) {
+        console.log(data.status);
+        console.log(data);
+      })
+      .on('liqpay.ready', function (data) {
+        // ready
+      })
+      .on('liqpay.close', function (data) {
+        // close
+      });
+  };
+}
 
-document.body.innerHTML = `<p style="width:400px">${JSON.stringify(tg)}<p>`;
+onLoad();
