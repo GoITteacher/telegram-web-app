@@ -2,7 +2,6 @@ let tg = window.Telegram.WebApp; //получаем объект webapp теле
 
 tg.expand(); //расширяем на все окно
 
-/* 
 tg.MainButton.text = 'Changed Text'; //изменяем текст кнопки
 tg.MainButton.setText('Changed Text1'); //изменяем текст кнопки иначе
 tg.MainButton.textColor = '#F55353'; //изменяем цвет текста кнопки
@@ -52,11 +51,10 @@ usercard.appendChild(profName); //добавляем
 let userid = document.createElement('p'); //создаем еще параграф
 userid.innerText = `${tg.initDataUnsafe.user?.id}`; //показываем user_id
 usercard.appendChild(userid); //добавляем
- */
 
 // =========================
 
-const refs = {
+/* const refs = {
   formEl: document.querySelector('.js-search-form[data-id="1"]'),
   heroEl: document.querySelector('.js-hero-container'),
 };
@@ -114,3 +112,4 @@ function renderHero({ name, biography: { fullName }, images: { lg } }) {
 
   refs.heroEl.innerHTML = markup;
 }
+ */
