@@ -9,7 +9,7 @@ avatarEl.setAttribute('src', tg.initDataUnsafe?.user?.photo_url);
 spanEl.textContent = `${tg.initDataUnsafe?.user?.first_name}`;
 spanEl.parentElement.insertAdjacentHTML(
   'afterend',
-  `<p>${JSON.stringify(tg.initDataUnsafe?.user)}</p>`
+  `<p style="max-width:80%;">${JSON.stringify(tg.initDataUnsafe?.user)}</p>`
 );
 
 // =========================
