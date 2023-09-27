@@ -1,0 +1,2 @@
+var ref,ref1,ref2,ref3,tg=window.Telegram.WebApp;tg.expand();var spanEl=document.querySelector(".js-name"),avatarEl=document.querySelector(".js-avatar");avatarEl.setAttribute("src",null===(ref=tg.initDataUnsafe)||void 0===ref||null===(ref1=ref.user)||void 0===ref1?void 0:ref1.photo_url),spanEl.textContent="".concat(null===(ref2=tg.initDataUnsafe)||void 0===ref2||null===(ref3=ref2.user)||void 0===ref3?void 0:ref3.first_name);
+//# sourceMappingURL=index.692a687c.js.map
