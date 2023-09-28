@@ -14,22 +14,19 @@ function calculateSignature(data) {
   return signature;
 }
 
-const data = {
-  version: 3,
-  public_key: public_key,
-  action: 'pay',
-  amount: 200,
-  currency: 'UAH',
-  description: 'DESCRIPTION',
-  order_id: 'ORDER_ID',
-  language: 'uk',
-};
-
 async function onLoad() {
-  // const record = await Store.getRecord(userId);
-  // document.body.innerHTML = JSON.stringify(record);
   const index = location.search.lastIndexOf('=');
-  document.body.innerHTML = Number(location.search.slice(index + 1)) / 100;
+
+  const data = {
+    version: 3,
+    public_key: public_key,
+    action: 'pay',
+    amount: Number(location.search.slice(index + 1)) / 100,
+    currency: 'UAH',
+    description: 'DESCRIPTION',
+    order_id: 'ORDER_ID',
+    language: 'uk',
+  };
 
   window.LiqPayCheckoutCallback = function () {
     LiqPayCheckout.init({
