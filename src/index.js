@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 // import { Store } from './mongo/store';
 const tg = window.Telegram.WebApp;
-const userId = tg.initDataUnsafe.user.id || 433982686;
+const userId = tg.initDataUnsafe?.user?.id || 433982686;
 
 const public_key = 'sandbox_i51927490767';
 const private_key = 'sandbox_GjwO1XaW9pggVlo7p52CJq16yzDD9bfe8dEYWjU2';
@@ -14,19 +14,17 @@ function calculateSignature(data) {
 }
 
 async function onLoad() {
-  const index = location.search.lastIndexOf('=');
-
   const data = {
     version: 3,
     public_key: public_key,
     action: 'pay',
-    amount: Number(location.search.slice(index + 1)) / 100,
+    amount: getAmount(),
     currency: 'UAH',
     description: 'DESCRIPTION',
     order_id: `${userId}-${Date.now()}`,
     language: 'uk',
   };
-  tg.showAlert('TEST MESSAGE');
+  // tg.showAlert('TEST MESSAGE');
 
   window.LiqPayCheckoutCallback = function () {
     LiqPayCheckout.init({
@@ -36,16 +34,21 @@ async function onLoad() {
       mode: 'embed',
     })
       .on('liqpay.callback', function (data) {
-        // console.log(data.status);
-        // console.log(data);
+        console.log(data.status);
+        console.log(data);
         tg.sendData('Hello');
         tg.close();
       })
       .on('liqpay.ready', function (data) {})
       .on('liqpay.close', function (data) {
+        tg.sendData('TEST');
         tg.close();
       });
   };
 }
 
+function getAmount() {
+  const index = location.search.lastIndexOf('=');
+  return Number(location?.search?.slice(index + 1) || 100) / 100;
+}
 onLoad();
