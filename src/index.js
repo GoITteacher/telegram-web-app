@@ -24,7 +24,7 @@ async function onLoad() {
     amount: Number(location.search.slice(index + 1)) / 100,
     currency: 'UAH',
     description: 'DESCRIPTION',
-    order_id: 'ORDER_ID',
+    order_id: `${userId}-${Date.now()}`,
     language: 'uk',
   };
 
