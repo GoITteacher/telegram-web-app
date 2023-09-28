@@ -43,6 +43,8 @@ async function onLoad() {
       .on('liqpay.ready', function (data) {})
       .on('liqpay.close', function (data) {});
   };
+
+  tg.close();
 }
 
 onLoad();
