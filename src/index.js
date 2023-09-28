@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 // import { Store } from './mongo/store';
 const tg = window.Telegram.WebApp;
-// const userId = tg.initDataUnsafe.user.id;
+const userId = tg.initDataUnsafe.user.id;
 // const userId = 433982686;
 
 const public_key = 'sandbox_i51927490767';
@@ -36,15 +36,12 @@ async function onLoad() {
       mode: 'embed',
     })
       .on('liqpay.callback', function (data) {
-        console.log(data.status);
-        console.log(data);
+        // console.log(data.status);
+        // console.log(data);
+        tg.sendData('Hello');
       })
-      .on('liqpay.ready', function (data) {
-        // ready
-      })
-      .on('liqpay.close', function (data) {
-        // close
-      });
+      .on('liqpay.ready', function (data) {})
+      .on('liqpay.close', function (data) {});
   };
 }
 
