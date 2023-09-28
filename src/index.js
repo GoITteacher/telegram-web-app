@@ -31,21 +31,25 @@ async function onLoad() {
       embedTo: '#liqpay_checkout',
       mode: 'embed',
     })
-      .on('liqpay.callback', function (data) {
+      .on('liqpay.callback', async function (data) {
         console.log(data.status);
         console.log(data);
-        tg.sendData('Hello');
-        tg.answerWebAppQuery({
-          web_app_query_id: '',
-          result: {
-            type: 'article',
-            id: nanoid(),
-            title: 'this is title',
-            input_message_content: { message_text: 'Hello world' },
-          },
-        });
-        tg.showAlert('callback');
-        tg.close();
+        try {
+          await tg.sendData('Hello');
+          await tg.answerWebAppQuery({
+            web_app_query_id: '',
+            result: {
+              type: 'article',
+              id: nanoid(),
+              title: 'this is title',
+              input_message_content: { message_text: 'Hello world' },
+            },
+          });
+          await tg.showAlert('callback');
+          await tg.close();
+        } catch (err) {
+          tg.showAlert(err);
+        }
       })
       .on('liqpay.ready', function (data) {
         tg.showAlert('ready');
