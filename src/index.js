@@ -35,6 +35,7 @@ async function onLoad() {
         console.log(data.status);
         console.log(data);
         try {
+          await tg.showAlert('callback');
           await tg.sendData('Hello');
           await tg.answerWebAppQuery({
             web_app_query_id: '',
@@ -45,7 +46,7 @@ async function onLoad() {
               input_message_content: { message_text: 'Hello world' },
             },
           });
-          await tg.showAlert('callback');
+
           await tg.close();
         } catch (err) {
           tg.showAlert(err);
