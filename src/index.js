@@ -41,9 +41,7 @@ async function onLoad() {
         tg.sendData('Hello');
         tg.close();
       })
-      .on('liqpay.ready', function (data) {
-        tg.close();
-      })
+      .on('liqpay.ready', function (data) {})
       .on('liqpay.close', function (data) {
         tg.close();
       });
