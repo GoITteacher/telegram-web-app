@@ -1,8 +1,7 @@
 import crypto from 'crypto';
 // import { Store } from './mongo/store';
 const tg = window.Telegram.WebApp;
-const userId = tg.initDataUnsafe.user.id;
-// const userId = 433982686;
+const userId = tg.initDataUnsafe.user.id || 433982686;
 
 const public_key = 'sandbox_i51927490767';
 const private_key = 'sandbox_GjwO1XaW9pggVlo7p52CJq16yzDD9bfe8dEYWjU2';
@@ -27,6 +26,7 @@ async function onLoad() {
     order_id: `${userId}-${Date.now()}`,
     language: 'uk',
   };
+  tg.showAlert('TEST MESSAGE');
 
   window.LiqPayCheckoutCallback = function () {
     LiqPayCheckout.init({
