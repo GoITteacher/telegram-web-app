@@ -1,31 +1,20 @@
-import { connectToDatabase } from './connection.js';
-import { MONGO_COLLECTIONS } from './constants.js';
+import axios from 'axios';
+
+const instance = axios.create({
+  baseURL: 'https://hu61tkqkea.execute-api.us-east-2.amazonaws.com/dev',
+});
 
 export class Store {
   static async setRecord(key, value) {
-    const db = await connectToDatabase();
-    const collection = await db.collection(MONGO_COLLECTIONS.STORE);
-    const record = {
-      key,
-      data: value,
-    };
-    return collection.insertOne(record);
+    const response = await instance.post('/record', { key, value });
+    return response;
   }
 
   static async getRecord(key) {
-    const db = await connectToDatabase();
-    const collection = await db.collection(MONGO_COLLECTIONS.ORDERS);
-    const filters = { key };
-    const res = await collection.find(filters).toArray();
-    Store.deleteRecordByKey(key);
-    return res[0];
-  }
-
-  static async deleteRecordByKey(key) {
-    const db = await connectToDatabase();
-    const collection = await db.collection(MONGO_COLLECTIONS.ORDERS);
-    const filter = { key };
-    const res = await collection.deleteOne(filter);
-    return res;
+    return instance.get('/record', {
+      params: {
+        key,
+      },
+    });
   }
 }

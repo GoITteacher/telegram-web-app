@@ -1,7 +1,8 @@
 import crypto from 'crypto';
-import { Store } from './mongo/store';
+// import { Store } from './mongo/store';
 const tg = window.Telegram.WebApp;
-const userId = tg.initDataUnsafe.user.id;
+// const userId = tg.initDataUnsafe.user.id;
+// const userId = 433982686;
 
 const public_key = 'sandbox_i51927490767';
 const private_key = 'sandbox_GjwO1XaW9pggVlo7p52CJq16yzDD9bfe8dEYWjU2';
@@ -12,6 +13,7 @@ function calculateSignature(data) {
   const signature = Buffer.from(sha1Hash).toString('base64');
   return signature;
 }
+
 const data = {
   version: 3,
   public_key: public_key,
@@ -25,7 +27,7 @@ const data = {
 
 async function onLoad() {
   // const record = await Store.getRecord(userId);
-  document.body.innerHTML = JSON.stringify(userId);
+  // document.body.innerHTML = JSON.stringify(record);
 
   window.LiqPayCheckoutCallback = function () {
     LiqPayCheckout.init({
