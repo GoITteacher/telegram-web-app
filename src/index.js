@@ -47,6 +47,8 @@ async function onLoad() {
         // close
       });
   };
+
+  document.body.innerHTML = JSON.stringify(location);
 }
 
 onLoad();
