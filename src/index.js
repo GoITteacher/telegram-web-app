@@ -24,8 +24,8 @@ const data = {
 };
 
 async function onLoad() {
-  const record = await Store.getRecord(userId);
-  document.body.innerHTML = JSON.stringify(record);
+  // const record = await Store.getRecord(userId);
+  document.body.innerHTML = JSON.stringify(userId);
 
   window.LiqPayCheckoutCallback = function () {
     LiqPayCheckout.init({
