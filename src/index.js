@@ -29,8 +29,7 @@ async function onLoad() {
   // const record = await Store.getRecord(userId);
   // document.body.innerHTML = JSON.stringify(record);
   const index = location.search.lastIndexOf('=');
-  document.body.innerHTML =
-    Number(JSON.stringify(location.search.slice(index + 1))) / 100;
+  document.body.innerHTML = Number(location.search.slice(index + 1)) / 100;
 
   window.LiqPayCheckoutCallback = function () {
     LiqPayCheckout.init({
