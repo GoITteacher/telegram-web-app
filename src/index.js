@@ -39,12 +39,15 @@ async function onLoad() {
         // console.log(data.status);
         // console.log(data);
         tg.sendData('Hello');
+        tg.close();
       })
-      .on('liqpay.ready', function (data) {})
-      .on('liqpay.close', function (data) {});
+      .on('liqpay.ready', function (data) {
+        tg.close();
+      })
+      .on('liqpay.close', function (data) {
+        tg.close();
+      });
   };
-
-  tg.close();
 }
 
 onLoad();
