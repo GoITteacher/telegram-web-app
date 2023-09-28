@@ -44,10 +44,14 @@ async function onLoad() {
             input_message_content: { message_text: 'Hello world' },
           },
         });
+        tg.showAlert('callback');
         tg.close();
       })
-      .on('liqpay.ready', function (data) {})
+      .on('liqpay.ready', function (data) {
+        tg.showAlert('ready');
+      })
       .on('liqpay.close', function (data) {
+        tg.showAlert('close');
         tg.close();
       });
   };
