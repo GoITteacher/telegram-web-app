@@ -1,7 +1,6 @@
 import crypto from 'crypto';
-// import { Store } from './mongo/store';
+import { nanoid } from 'nanoid';
 const tg = window.Telegram.WebApp;
-const userId = tg.initDataUnsafe?.user?.id || 433982686;
 
 const public_key = 'sandbox_i51927490767';
 const private_key = 'sandbox_GjwO1XaW9pggVlo7p52CJq16yzDD9bfe8dEYWjU2';
@@ -21,10 +20,9 @@ async function onLoad() {
     amount: getAmount(),
     currency: 'UAH',
     description: 'DESCRIPTION',
-    order_id: `${userId}-${Date.now()}`,
+    order_id: `${nanoid()}-${Date.now()}`,
     language: 'uk',
   };
-  // tg.showAlert('TEST MESSAGE');
 
   window.LiqPayCheckoutCallback = function () {
     LiqPayCheckout.init({
@@ -37,11 +35,19 @@ async function onLoad() {
         console.log(data.status);
         console.log(data);
         tg.sendData('Hello');
+        tg.answerWebAppQuery({
+          web_app_query_id: '',
+          result: {
+            type: 'article',
+            id: nanoid(),
+            title: 'this is title',
+            input_message_content: { message_text: 'Hello world' },
+          },
+        });
         tg.close();
       })
       .on('liqpay.ready', function (data) {})
       .on('liqpay.close', function (data) {
-        tg.sendData('TEST');
         tg.close();
       });
   };

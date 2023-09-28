@@ -23,6 +23,7 @@
     "crypto": "^1.0.1",
     "liqpay": "^0.0.1",
     "modern-normalize": "^1.1.0",
+    "nanoid": "^5.0.1",
     "pg": "^8.11.3"
   },
   "devDependencies": {
